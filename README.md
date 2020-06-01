@@ -1,23 +1,23 @@
 # Next Level Week - Rocketseat
 
-# Primeiros Passos
+
 
 ## Node.js
 
-### Instalação
+**Instalação
 
 Download em https://nodejs.org/en/ 
 
 Ou via package manager
 https://nodejs.org/en/ -> Other Downloads -> Installing Node.js via package manager -> Selecione o package manager
 
-#### Ubuntu (versão LTS - 12)
+**Ubuntu (versão LTS - 12)
 ```
 curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-### Iniciando o projeto
+**Iniciando o projeto
 ```
 npm init -y
 ```
@@ -28,7 +28,8 @@ npm install express
 npm install @types/express -D
 
 ```
-### Typescript
+
+**Typescript
 ```
 npm install ts-node -D
 npm install typescript -D
@@ -36,7 +37,7 @@ npm install typescript -D
 npx tsc --init
 ```
 
-### Criando script para reinicialização do server
+**Criando script para reinicialização do server
 ```
 npm install ts-node-dev -D
 npx ts-node-dev ::dir
