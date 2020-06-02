@@ -55,7 +55,7 @@ npm run dev
 
 **Criando projeto padrão do React**
 ```
-npm create-react-app web --template=typescript
+npx create-react-app web --template=typescript
 // web sendo o nome do projeto
 // --template=typescript para já adicioná-lo ao projeto
 ```
