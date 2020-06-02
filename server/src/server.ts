@@ -1,6 +1,9 @@
-import express from "express";
+import express, { response } from "express";
 
 const app = express();
+
+// o express não entende json, precisamos passar essa info pra ele
+app.use(express.json());
 
 const users = ["Diego", "Cleiton", "Robson", "Daniel"];
 
@@ -29,13 +32,24 @@ app.get("/users/:id", (request, response) => {
 });
 
 app.post("/users", (request, response) => {
+  const data = request.body;
+
   const user = {
-    name: "Diego",
-    email: "diego@rocketseat.com.br",
+    name: data.name,
+    email: data.email,
   };
 
-  // return para devolver a resposta e não continuar executando após isso
   return response.json(user);
 });
+
+// app.post("/users", (request, response) => {
+//   const user = {
+//     name: "Diego",
+//     email: "diego@rocketseat.com.br",
+//   };
+
+// return para devolver a resposta e não continuar executando após isso
+//   return response.json(user);
+// });
 
 app.listen(3333);
