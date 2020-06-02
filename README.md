@@ -42,15 +42,21 @@ npx tsc --init
 npm install ts-node-dev -D
 npx ts-node-dev ::dir
 
+// usando um alias para 
 "scripts": {
     "dev": "ts-node-dev ::dir"
 }
+// rodando:
 npm run dev
 ```
 
 
 ## React
+
+**Criando projeto padrão do React**
 ```
 npm create-react-app web --template=typescript
+// web sendo o nome do projeto
+// --template=typescript para já adicioná-lo ao projeto
 ```
 
