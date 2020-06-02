@@ -1,15 +1,41 @@
 import express from "express";
-//ts precisa das definições de tipos da bilbioteca, por isso os ... no import
 
 const app = express();
 
-app.get("/users", (request, response) => {
-  // request pra obter dados da requisição, como dados do usuário
-  console.log("iha");
+const users = ["Diego", "Cleiton", "Robson", "Daniel"];
 
-  //response.send('Hello world');
-  // precisamos lembrar que ele sempre vai retornar JSON
-  response.json(["Diego", "Cleiton", "Robson"]);
+app.get("/users", (request, response) => {
+  // console.log("Listagem de usuários");
+  //response.json(users);
+
+  // usando query param
+  const search = String(request.query.search);
+
+  // é opcional, então faremos um if
+  const filteredUsers = search
+    ? users.filter((user) => user.includes(search))
+    : users;
+
+  return response.json(filteredUsers);
+});
+
+app.get("/users/:id", (request, response) => {
+  console.log("Buscando por id");
+  const id = Number(request.params.id);
+
+  const user = users[id];
+
+  response.json(user);
+});
+
+app.post("/users", (request, response) => {
+  const user = {
+    name: "Diego",
+    email: "diego@rocketseat.com.br",
+  };
+
+  // return para devolver a resposta e não continuar executando após isso
+  return response.json(user);
 });
 
 app.listen(3333);
