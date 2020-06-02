@@ -41,15 +41,15 @@ npx tsc --init
 ```
 npm install ts-node-dev -D
 npx ts-node-dev ::dir
-
-// usando um alias para 
+```
+**Scripts**
+```
 "scripts": {
     "dev": "ts-node-dev ::dir"
 }
-// rodando:
+// exemplo de execução
 npm run dev
 ```
-
 
 ## React
 
