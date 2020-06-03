@@ -1,0 +1,16 @@
+{
+  "sqltools.connections": [
+    {
+      "database": "${workspaceFolder:server}/src/database/connection.ts",
+      "driver": "SQLite",
+      "name": "connection",
+      "previewLimit": 50
+    },
+    {
+      "database": "${workspaceFolder:server}/src/database/database.sqlite",
+      "driver": "SQLite",
+      "name": "connection2",
+      "previewLimit": 50
+    }
+  ]
+}
