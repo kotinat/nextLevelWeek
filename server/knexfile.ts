@@ -9,7 +9,10 @@ module.exports = {
     filename: path.resolve(__dirname, "src", "database", "database.sqlite"),
   },
   migrations: {
-    directory: path.resolve(__dirname, 'src', 'database', 'migrations'), 
+    directory: path.resolve(__dirname, "src", "database", "migrations"),
   },
-  useNullAsDefault: true
+  seeds: {
+    directory: path.resolve(__dirname, "src", "database", "seeds"),
+  },
+  useNullAsDefault: true,
 };
