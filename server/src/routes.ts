@@ -36,7 +36,8 @@ routes.post("/points", async (request, response) => {
     items, // itens que seleciona embaixo
   } = request.body;
 
-  await knex("points").insert({
+  // novidade, para fazer o relacionamento entre as tabelas
+  const ids = await knex("points").insert({
     image: "image-fake",
     name,
     email,
@@ -46,6 +47,16 @@ routes.post("/points", async (request, response) => {
     city,
     uf,
   });
+
+  const pointItems = items.map((item_id: number) => {
+    return {
+      item_id,
+      point_id: ids[0],
+    };
+  });
+
+  // nova inserção, agora dos relacionamentos
+  await knex("point_items").insert(pointItems);
 
   return response.json({ sucess: true });
 });
