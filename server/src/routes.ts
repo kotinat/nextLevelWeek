@@ -15,12 +15,39 @@ routes.get("/items", async (request, response) => {
   // frnt, por exemplo
   const serializedItems = items.map((item) => {
     return {
+      id: item.id,
       title: item.title,
       image_url: `http://localhost:3333/uploads/${item.image}`,
-      
     };
   });
   return response.json(serializedItems);
+});
+
+// criando nosso cadastro do ponto de coleta
+routes.post("/points", async (request, response) => {
+  const {
+    name,
+    email,
+    whatsapp,
+    latitude,
+    longitude,
+    city,
+    uf,
+    items, // itens que seleciona embaixo
+  } = request.body;
+
+  await knex("points").insert({
+    image: "image-fake",
+    name,
+    email,
+    whatsapp,
+    latitude,
+    longitude,
+    city,
+    uf,
+  });
+
+  return response.json({ sucess: true });
 });
 
 export default routes;
