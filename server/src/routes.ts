@@ -1,31 +1,16 @@
 import express from "express";
-import knex from "./database/connection";
 
 import PointsController from "./controllers/PointsController";
+import ItemsController from "./controllers/ItemsController";
 
 const routes = express.Router();
 const pointsController = new PointsController();
+const itemsController = new ItemsController();
 
 // listar todos os itens
-routes.get("/items", async (request, response) => {
-  // query select
-  // depois, checar melhor como fazer query's no knex
-  // precisamos do await, para que ele aguarde a query
-  // para continuar
-  const items = await knex("items").select("*");
+routes.get("/items", itemsController.index);
 
-  // transformar informações para um novo formato, para o
-  // frnt, por exemplo
-  const serializedItems = items.map((item) => {
-    return {
-      id: item.id,
-      title: item.title,
-      image_url: `http://localhost:3333/uploads/${item.image}`,
-    };
-  });
-  return response.json(serializedItems);
-});
-
+// criar ponto de coleta
 routes.post("/points", pointsController.create);
 
 export default routes;
